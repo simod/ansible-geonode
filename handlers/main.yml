@@ -9,3 +9,6 @@
   service: name=uwsgi state=restarted
   sudo: yes
 
+- name: init elasticsearch
+  command: update-rc.d elasticsearch defaults 95 10
+  tags: [elasticsearch]
