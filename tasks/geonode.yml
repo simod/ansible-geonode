@@ -46,7 +46,7 @@
   copy: src=known_hosts dest={{ssh_dir}}/known_hosts
 
 - name: checkout latest web app code
-  git: repo={{code_repository}} version={{app_name}} dest={{app_code_dir}}/{{app_name}}
+  git: repo={{code_repository}} version={{app_name}} dest={{app_code_dir}}/{{app_name}} force=true
 
 - name: copy the local_settings.py file in place
   template: src=local_settings.py.j2 dest={{ app_code_dir}}/{{app_name}}/{{ app_name}}/local_settings.py
@@ -95,6 +95,8 @@
 - name: create uwsgi log directory
   file: path=/var/log/uwsgi state=directory mode=0777 owner=www-data group=www-data
   sudo: yes
+  notify:
+    - restart uwsgi
 
 - name: create {{db_metadata_instance}} db
   postgresql_db: name={{db_metadata_instance}}

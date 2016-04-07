@@ -19,3 +19,6 @@
   sudo: yes
   notify:
     - restart nginx
+
+- name: add user vagrant to the www-data group
+  user: name=vagrant groups=www-data append=yes

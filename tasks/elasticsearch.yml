@@ -56,7 +56,7 @@
   tags: [elasticsearch]
 
 - name: supervisor-elasticsearch
-  copy: src=roles/{{ role_name }}/files/supervisor-elasticsearch.conf dest=/etc/supervisor/conf.d
+  copy: src={{ role_name }}/files/supervisor-elasticsearch.conf dest=/etc/supervisor/conf.d
   tags: [elasticsearch]
   notify: reload supervisor
 
