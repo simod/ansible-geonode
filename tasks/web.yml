@@ -6,5 +6,6 @@
 
 - include: nginx.yml
 - include: uwsgi.yml
-- include: geonode.yml
 - include: elasticsearch.yml
+- include: geonode.yml
+
